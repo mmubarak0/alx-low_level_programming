@@ -1,4 +1,4 @@
-#include <main.h>
+#include "main.h"
 
 /**
   * wildcmp - compares two strings and returns 1
@@ -9,8 +9,6 @@
   */
 int wildcmp(char *s1, char *s2)
 {
-	int i;
-	int j;
 	char *ss1 = s1;
 	char *ss2 = s2;
 
