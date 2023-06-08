@@ -1,6 +1,18 @@
 #include "main.h"
 
 /**
+  * m - compares two string
+  * @s: first string
+  * @t: second string containing wild char
+  * Return: 1 if there is a match 0 otherwise
+  */
+int m(char *s, char *t)
+{
+	return (*t - 42 ? *s ? (*t == 63) | (*s == *t) && m(s + 1, t + 1)
+			: !*t : m(s, t + 1) || (*s && m(s + 1, t)));
+}
+
+/**
   * wildcmp - compares two strings and returns 1
   * if the strings can be considered identical, otherwise return 0
   * @s1: first string.
@@ -9,40 +21,5 @@
   */
 int wildcmp(char *s1, char *s2)
 {
-	char *ss1 = s1;
-	char *ss2 = s2;
-
-	while (*ss1 != '\0')
-	{
-		if (*ss2 == '*')
-		{
-			while (*(ss2 + 1) == '*')
-				ss2++;
-			if (*(ss2 + 1) == '\0')
-			{
-				return (1);
-			}
-			else
-			{
-				while (*(ss2 + 1) != *ss1 && *ss1 != '\0')
-					ss1++;
-				ss2++;
-				if (*ss1 != *ss2)
-					return (0);
-			}
-		}
-		else
-		{
-			if (*ss1 != *ss2)
-			{
-				return (0);
-			}
-			else
-			{
-				ss1++;
-				ss2++;
-			}
-		}
-	}
-	return (1);
+	return (m(s1, s2));
 }
