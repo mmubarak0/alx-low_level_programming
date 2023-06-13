@@ -3,17 +3,14 @@
 #include <stdlib.h>
 
 /**
-  * strtow - splits a string into words.
-  * @str: string to split
-  * Return: NULL if str == NULL or str == ""
+  * len_words - find words length
+  * @str: string array
+  * Return: counter;
   */
-char **strtow(char *str)
+int len_words(char *str)
 {
-	int i = 0, j = 0, k = 0, n = 0, c = 0, x = 0;
-	char **result;
+	int c = 0, i = 0;
 
-	if (str == NULL)
-		return (NULL);
 	while (str[i] != '\0')
 	{
 		if (str[i] != ' ')
@@ -25,6 +22,22 @@ char **strtow(char *str)
 		}
 		i++;
 	}
+	return (c);
+}
+
+/**
+  * strtow - splits a string into words.
+  * @str: string to split
+  * Return: NULL if str == NULL or str == ""
+  */
+char **strtow(char *str)
+{
+	int i = 0, j = 0, k = 0, n = 0, c = 0, x = 0;
+	char **result;
+
+	if (str == NULL)
+		return (NULL);
+	c = len_words(str);
 	if (c == 0)
 		return (NULL);
 	result = malloc(sizeof(char *) * c);
@@ -39,7 +52,7 @@ char **strtow(char *str)
 				j = i;
 				while (str[j++] != ' ')
 					n++;
-				result[x] = malloc(sizeof(char *) * n + 1);
+				result[x] = malloc(sizeof(char *) * n);
 				j = i;
 				k = 0;
 				while (str[j] != ' ')
@@ -52,7 +65,7 @@ char **strtow(char *str)
 				j = i;
 				while (str[j++] != ' ')
 					n++;
-				result[x] = malloc(sizeof(char *) * n + 1);
+				result[x] = malloc(sizeof(char *) * n);
 				j = i;
 				k = 0;
 				while (str[j] != ' ')
