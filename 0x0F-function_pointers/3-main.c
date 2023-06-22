@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 		printf("Error\n");
 		exit(98);
 	}
-	if (strchr("+-*/%", argv[2][0]) == NULL)
+	if (strchr("+-*/%", argv[2][0]) == NULL || strlen(argv[2]) != 1)
 	{
 		printf("Error\n");
 		exit(99);
