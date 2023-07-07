@@ -27,21 +27,18 @@ void print_binary(unsigned long int n)
 {
 	unsigned long int div = 1;
 	int power = 0;
-	long int x;
 
-	x = n - div;
-	while (x > 0)
+	while (n >= div * 2)
 	{
 		div *= 2;
 		power++;
-		x = n - div;
 	}
-	while (x > 0)
+	while (power >= 0)
 	{
-		if (x >= 0)
+		if (n >= div)
 		{
 			_putchar('1');
-			x = x - div;
+			n = n - div;
 		}
 		else
 			_putchar('0');
