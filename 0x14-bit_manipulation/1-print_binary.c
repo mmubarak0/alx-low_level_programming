@@ -25,23 +25,28 @@ unsigned long int _pow2(int p)
   */
 void print_binary(unsigned long int n)
 {
-	unsigned long int div = 1;
-	int power = 0;
-
-	while (n >= div * 2)
-	{
-		div *= 2;
-		power++;
-	}
-	while (power >= 0)
-	{
-		if (n >= div)
-		{
-			_putchar('1');
-			n = n - div;
-		}
-		else
-			_putchar('0');
-		div = _pow2(--power);
-	}
+	if (n > 1)
+		print_binary(n >> 1);
+	_putchar((n & 1) + '0');
+/*
+ *	unsigned long int div = 1;
+ *	int power = 0;
+ *
+ *	while (n >= div * 2)
+ *	{
+ *		div *= 2;
+ *		power++;
+ *	}
+ *	while (power >= 0)
+ *	{
+ *		if (n >= div)
+ *		{
+ *			_putchar('1');
+ *			n = n - div;
+ *		}
+ *		else
+ *			_putchar('0');
+ *		div = _pow2(--power);
+ *	}
+ */
 }
