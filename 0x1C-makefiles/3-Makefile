@@ -22,3 +22,5 @@ oclean:
 fclean:
 	$(RM) -f *~ $(NAME)
 	$(RM) -f $(OBJ)
+
+re: oclean all
