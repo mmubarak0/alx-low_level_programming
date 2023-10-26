@@ -12,11 +12,11 @@ def island_perimeter(grid):
             if column == 1:
                 if idx > 0 and grid[idx - 1][idy] == 1:
                     nc -= 1
-                if idy > 0 and grid[idx][idy - 1] == 1:
-                    nc -= 1
-                if idy < len(grid) - 1 and grid[idx][idy + 1] == 1:
+                if idy < len(grid[idx]) - 1 and grid[idx][idy + 1] == 1:
                     nc -= 1
                 if idx < len(grid) - 1 and grid[idx + 1][idy] == 1:
+                    nc -= 1
+                if idy > 0 and grid[idx][idy - 1] == 1:
                     nc -= 1
                 perimeter += nc
     return perimeter
